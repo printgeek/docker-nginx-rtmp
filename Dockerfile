@@ -77,4 +77,8 @@ COPY nginx.conf /opt/nginx/nginx.conf.HD
 COPY static /www/static
 COPY html /opt/nginx/html
 
+RUN mkdir /opt/nginx/html/js
+RUN cd /opt/nginx/html/js && wget https://code.jquery.com/jquery-3.2.1.min.js \
+  && wget https://code.jquery.com/jquery-1.11.2.min.js
+
 CMD ["/opt/nginx/sbin/nginx"]
