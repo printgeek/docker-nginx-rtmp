@@ -1,1 +1,63 @@
-html
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+   <link rel="apple-touch-icon" sizes="180x180" href="ico/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="ico/favicon-16x16.png">
+   <link rel="manifest" href="ico/manifest.json">
+   <link rel="mask-icon" href="ico/safari-pinned-tab.svg" color="#5bbad5">
+   <meta name="theme-color" content="#ffffff">
+
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>   
+   <meta name="viewport" content="initial-scale=1, user-scalable=no">
+   <title></title>
+
+   <link rel="stylesheet" href="skin/skin.css">
+   <style>
+   body { font: 12px "Myriad Pro", "Lucida Grande", sans-serif; text-align: center; background-color: grey; }
+   .flowplayer { width: 60%; }
+   .flowplayer .fp-share {
+     display: none;
+     }
+   #hlsjslive {
+     background-image: url("img/video-placeholder.png");
+     }
+   </style>
+
+   <script src="js/jquery-1.11.2.min.js"></script>
+   <script src="js/flowplayer.min.js"></script>
+   <script src="js/flowplayer.hlsjs.min.js"></script>
+
+  <script>
+  window.onload = function () {
+
+   flowplayer("#hlsjslive", {
+    splash: true,
+    ratio: 3/4,
+
+    swfHls: "flowplayerhls.swf",
+
+    clip: {
+      hlsjs: {
+        safari: true
+      },
+      live: true,
+      sources: [
+        { type: "application/x-mpegurl",
+          src: "https://stream.omnifoc.us/hls/stream.m3u8" }
+      ]
+    }
+   });
+  };
+  </script>
+
+</head>
+
+<body>
+   <h1 id="live"></h1>
+   <div id="hlsjslive" class="no-volume is-live"></div>
+</body>
