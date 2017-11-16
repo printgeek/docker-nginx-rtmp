@@ -8,7 +8,7 @@ ENV FFMPEG_VERSION 3.4
 RUN mkdir -p /opt/data && mkdir /www
 
 RUN	apk update && apk add	\
-  gcc	binutils-libs binutils build-base	libgcc make pkgconf pkgconfig \
+  gcc binutils-libs binutils build-base libgcc make pkgconf pkgconfig \
   openssl openssl-dev ca-certificates pcre \
   musl-dev libc-dev pcre-dev zlib-dev
 
