@@ -72,6 +72,8 @@ EXPOSE 80 1935
 VOLUME /www/static /opt/nginx/html
 
 COPY nginx.conf /opt/nginx/nginx.conf
+COPY nginx.conf /opt/nginx/nginx.conf.SD
+COPY nginx.conf /opt/nginx/nginx.conf.HD
 COPY static /www/static
 COPY html /opt/nginx/html
 
