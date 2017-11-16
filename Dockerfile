@@ -1,12 +1,9 @@
-FROM alpine:3.3
+FROM alpine:3.6
 MAINTAINER Alfred Gutierrez <alf.g.jr@gmail.com>
 
 ENV NGINX_VERSION 1.13.6
 ENV NGINX_RTMP_VERSION 1.2.0
-ENV FFMPEG_VERSION 3.3.4
-
-EXPOSE 1935
-EXPOSE 80
+ENV FFMPEG_VERSION 3.4
 
 RUN mkdir -p /opt/data && mkdir /www
 
@@ -70,7 +67,12 @@ RUN cd /tmp/ffmpeg-${FFMPEG_VERSION} && \
 # Cleanup.
 RUN rm -rf /var/cache/* /tmp/*
 
-ADD nginx.conf /opt/nginx/nginx.conf
-ADD static /www/static
+EXPOSE 80 1935
+
+VOLUME /www/static /opt/nginx/html
+
+COPY nginx.conf /opt/nginx/nginx.conf
+COPY static /www/static
+COPY html /opt/nginx/html
 
 CMD ["/opt/nginx/sbin/nginx"]
