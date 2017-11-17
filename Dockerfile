@@ -29,6 +29,7 @@ RUN cd /tmp/nginx-${NGINX_VERSION} \
   --conf-path=/opt/nginx/nginx.conf --error-log-path=/opt/nginx/logs/error.log --http-log-path=/opt/nginx/logs/access.log \
   --with-debug
 RUN cd /tmp/nginx-${NGINX_VERSION} && make && make install
+ENV PATH /opt/nginx/sbin:$PATH
 
 # ffmpeg dependencies.
 RUN apk add --update nasm yasm-dev lame-dev libogg-dev x264-dev libvpx-dev libvorbis-dev x265-dev freetype-dev libass-dev libwebp-dev rtmpdump-dev libtheora-dev opus-dev
@@ -64,19 +65,17 @@ RUN cd /tmp/ffmpeg-${FFMPEG_VERSION} && \
   --disable-debug \
   && make && make install && make distclean
 
-
+COPY nginx.conf /opt/nginx/nginx.conf
+COPY nginx.conf.SD /opt/nginx/nginx.conf.SD
+COPY nginx.conf.HD /opt/nginx/nginx.conf.HD
+COPY static /www/static
+COPY html /opt/nginx/html
 
 # Cleanup.
 RUN rm -rf /var/cache/* /tmp/*
 
 EXPOSE 80 1935
 
-VOLUME /www/static /opt/nginx/html
+VOLUME /opt/nginx
 
-COPY nginx.conf /opt/nginx/nginx.conf
-COPY nginx.conf /opt/nginx/nginx.conf.SD
-COPY nginx.conf /opt/nginx/nginx.conf.HD
-COPY static /www/static
-COPY html /opt/nginx/html
-
-CMD ["/opt/nginx/sbin/nginx"]
+CMD ["nginx"]
