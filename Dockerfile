@@ -29,7 +29,6 @@ RUN cd /tmp/nginx-${NGINX_VERSION} \
   --conf-path=/opt/nginx/nginx.conf --error-log-path=/opt/nginx/logs/error.log --http-log-path=/opt/nginx/logs/access.log \
   --with-debug
 RUN cd /tmp/nginx-${NGINX_VERSION} && make && make install
-ENV PATH /opt/nginx/sbin:$PATH
 
 # ffmpeg dependencies.
 RUN apk add --update nasm yasm-dev lame-dev libogg-dev x264-dev libvpx-dev libvorbis-dev x265-dev freetype-dev libass-dev libwebp-dev rtmpdump-dev libtheora-dev opus-dev
@@ -78,4 +77,4 @@ EXPOSE 80 1935
 
 VOLUME /opt/nginx
 
-CMD ["nginx"]
+CMD ["/opt/nginx/sbin/nginx"]
