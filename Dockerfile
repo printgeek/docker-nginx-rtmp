@@ -84,7 +84,7 @@ RUN mkdir /opt/nginx/html/css
 RUN cd /opt/nginx/html/js && wget https://code.jquery.com/jquery-3.2.1.min.js \
   && wget https://code.jquery.com/jquery-1.11.2.min.js \
   && wget https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.12.2/videojs-contrib-hls.min.js \
-  && wget "http://vjs.zencdn.net/6.2.8/video.min.js"
-RUN cd /opt/nginx/html/css && wget "http://vjs.zencdn.net/6.2.8/video-js.css"
+  && wget http://vjs.zencdn.net/6.2.8/video.min.js
+RUN cd /opt/nginx/html/css && wget http://vjs.zencdn.net/6.2.8/video-js.css
 
 CMD ["/opt/nginx/sbin/nginx"]
