@@ -30,15 +30,15 @@
    <script src="js/video.js"></script>
    <script src="js/videojs-contrib-hls.min.js"></script>
    <script>
-      var player = videojs('streaming-video');                                                                                                                                                                                                   
+      var player = videojs('sd-video');                                                                                                                                                                                                   
       player.play();                                                                                                                                                                                                                             
    </script>
 </head>
                                                                                                                                                                                                                                                  
 <body>
   <div align="center">
-   <video id="streaming-video" class="video-js vjs-default-skin" controls preload="auto" poster="img/video-placeholder.png" data-setup='{}'>
-      <source src="./hls/stream.m3u8" type="application/x-mpegURL">
+   <video id="sd-video" class="video-js vjs-default-skin" controls preload="auto" poster="img/video-placeholder.png" data-setup='{}'>
+      <source src="./sd/stream.m3u8" type="application/x-mpegURL">
    </video>
   </div>       
 </body>
