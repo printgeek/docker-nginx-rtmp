@@ -31,7 +31,11 @@
    <script src="js/videojs-contrib-hls.min.js"></script>
    <script>
       var player = videojs('sd-video');                                                                                                                                                                                                   
-      player.play();                                                                                                                                                                                                                             
+      player.play();
+   </script>
+   <script>
+      var player = videojs('hd-video');                                                                                                                                                                                                   
+      player.play();
    </script>
 </head>
                                                                                                                                                                                                                                                  
@@ -39,6 +43,9 @@
   <div align="center">
    <video id="sd-video" class="video-js vjs-default-skin" controls preload="auto" poster="img/video-placeholder.png" data-setup='{}'>
       <source src="./sd/stream.m3u8" type="application/x-mpegURL">
+   </video>
+   <video id="hd-video" class="video-js vjs-default-skin" controls preload="auto" poster="img/video-placeholder.png" data-setup='{}'>
+      <source src="./hd/stream.m3u8" type="application/x-mpegURL">
    </video>
   </div>       
 </body>
